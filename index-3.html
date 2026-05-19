@@ -3,127 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rochit</title>
+<title>DP BOSS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Inter',sans-serif;
-}
-
-body{
-  min-height:100vh;
-  background:linear-gradient(135deg,#0a0f1c,#0f172a);
-  color:#e5e7eb;
-  display:flex;
-  flex-direction:column;
-}
-
-.top-bar{
-  background:#1e293b;
-  text-align:center;
-  padding:10px;
-  font-size:13px;
-  color:#cbd5f5;
-}
-
-.wrapper{
-  flex:1;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-}
-
-.card{
-  width:100%;
-  max-width:420px;
-  background:rgba(255,255,255,0.06);
-  backdrop-filter:blur(18px);
-  border-radius:20px;
-  padding:35px 28px;
-  box-shadow:0 20px 50px rgba(0,0,0,0.5);
-  text-align:center;
-  border:1px solid rgba(255,255,255,0.08);
-}
-
-.logo{
-  width:90px;
-  height:90px;
-  margin:0 auto 16px;
-  border-radius:18px;
-  overflow:hidden;
-  box-shadow:0 10px 25px rgba(0,0,0,0.4);
-}
-
-.logo img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-h1{
-  font-size:20px;
-  letter-spacing:1.4px;
-  margin-bottom:6px;
-}
-
-.subs{
-  font-size:13px;
-  color:#94a3b8;
-  margin-bottom:24px;
-}
-
-.features{
-  text-align:left;
-  font-size:14px;
-  line-height:1.7;
-  margin-bottom:28px;
-}
-
-.features span{
-  display:block;
-  margin-bottom:10px;
-  color:#e2e8f0;
-}
-
-.features span::before{
-  content:"✔";
-  color:#22c55e;
-  margin-right:8px;
-}
-
-.btn{
-  display:block;
-  background:linear-gradient(135deg,#38bdf8,#0ea5e9);
-  color:#fff;
-  padding:15px;
-  border-radius:12px;
-  font-size:15px;
-  font-weight:600;
-  text-decoration:none;
-  box-shadow:0 12px 30px rgba(14,165,233,0.45);
-  transition:0.3s ease;
-}
-
-.btn:hover{
-  transform:translateY(-2px);
-  box-shadow:0 16px 40px rgba(14,165,233,0.65);
-}
-
-.disclaimer{
-  margin-top:22px;
-  font-size:11px;
-  color:#94a3b8;
-  line-height:1.5;
-}
-</style>
-
-  <!-- Meta Pixel Code -->
+<!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -133,56 +17,684 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '4322864664662227');
+fbq('init', '2132262027505605');
 fbq('track', 'PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=4322864664662227&ev=PageView&noscript=1"
+src="https://www.facebook.com/tr?id=2132262027505605&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
+<style>
+:root {
+  --gold: #F5C842;
+  --gold2: #FFE082;
+  --green: #22c55e;
+  --green2: #4ade80;
+  --blue: #38bdf8;
+  --dark: #060A12;
+  --dark2: #0C1220;
+  --card: rgba(255,255,255,0.042);
+  --border: rgba(255,255,255,0.09);
+  --text: #E2E8F0;
+  --muted: #64748b;
+}
 
-  
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--dark);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  cursor: default;
+}
+
+/* ── NOISE TEXTURE OVERLAY ── */
+body::before {
+  content:'';
+  position:fixed; inset:0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events:none; z-index:0; opacity:.6;
+}
+
+/* ── NAVBAR ── */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:100;
+  padding: 16px 40px;
+  display: flex; align-items:center; justify-content:space-between;
+  background: rgba(6,10,18,0.75);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border);
+  animation: slideDown .6s ease both;
+}
+.nav-logo {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 22px;
+  letter-spacing: .12em;
+  background: linear-gradient(90deg, var(--gold), var(--gold2));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.nav-links { display:flex; gap:28px; }
+.nav-links a {
+  font-size:13px; font-weight:500; letter-spacing:.06em;
+  color: var(--muted); text-decoration:none;
+  transition: color .2s;
+}
+.nav-links a:hover { color:#fff; }
+.nav-cta {
+  background: var(--green); color:#052e16;
+  font-size:13px; font-weight:700; letter-spacing:.06em;
+  padding: 9px 20px; border-radius:999px;
+  text-decoration:none; transition: transform .15s, box-shadow .15s;
+  box-shadow: 0 4px 18px rgba(34,197,94,.35);
+}
+.nav-cta:hover { transform:translateY(-1px); box-shadow:0 6px 24px rgba(34,197,94,.45); }
+
+/* ── HERO ── */
+.hero {
+  position:relative; min-height:100vh;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; padding: 120px 24px 80px; overflow:hidden;
+  z-index:1;
+}
+
+.hero-bg-circles {
+  position:absolute; inset:0; pointer-events:none;
+}
+.hbc {
+  position:absolute; border-radius:50%;
+  filter: blur(100px);
+}
+.hbc1 { width:600px; height:600px; top:-200px; left:50%; transform:translateX(-50%); background:rgba(245,200,66,0.07); }
+.hbc2 { width:400px; height:400px; bottom:-100px; right:-100px; background:rgba(34,197,94,0.06); }
+.hbc3 { width:300px; height:300px; bottom:0; left:-80px; background:rgba(56,189,248,0.05); }
+
+/* Animated grid */
+.hero-grid {
+  position:absolute; inset:0; pointer-events:none;
+  background-image:
+    linear-gradient(rgba(245,200,66,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245,200,66,0.04) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: gridMove 20s linear infinite;
+}
+@keyframes gridMove { to { background-position: 50px 50px; } }
+
+.hero-eyebrow {
+  display:inline-flex; align-items:center; gap:7px;
+  border:1px solid rgba(245,200,66,0.25);
+  background: rgba(245,200,66,0.07);
+  padding:6px 16px; border-radius:999px;
+  font-size:12px; font-weight:600; letter-spacing:.12em;
+  color: var(--gold); text-transform:uppercase;
+  margin-bottom:30px;
+  animation: fadeUp .7s .1s ease both;
+}
+.live-dot {
+  width:7px; height:7px; background:var(--green); border-radius:50%;
+  animation: livePulse 1.4s infinite;
+}
+@keyframes livePulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(1.5)} }
+
+.avatar-wrap {
+  position:relative; width:140px; height:140px; margin:0 auto 26px;
+  animation: fadeUp .7s .15s ease both;
+}
+.avatar-spinner {
+  position:absolute; inset:-4px;
+  border-radius:50%;
+  background: conic-gradient(var(--gold), #ff6b6b, var(--green), var(--blue), var(--gold));
+  animation: spin 4s linear infinite;
+}
+.avatar-inner {
+  position:absolute; inset:3px;
+  border-radius:50%;
+  background: var(--dark);
+  z-index:1;
+}
+.avatar-wrap img {
+  position:absolute; inset:6px;
+  width:calc(100% - 12px); height:calc(100% - 12px);
+  border-radius:50%; object-fit:cover; z-index:2;
+}
+@keyframes spin { to{transform:rotate(360deg)} }
+
+.hero-title {
+  font-family:'Bebas Neue', cursive;
+  font-size: clamp(42px, 8vw, 78px);
+  letter-spacing:.08em; line-height:1;
+  margin-bottom:10px;
+  animation: fadeUp .7s .2s ease both;
+}
+.hero-title span {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold2) 50%, #fff 100%);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+}
+
+.hero-sub {
+  font-size: clamp(15px,2.5vw,18px); font-weight:300;
+  color: var(--muted); max-width:480px; line-height:1.65;
+  margin:0 auto 36px;
+  animation: fadeUp .7s .28s ease both;
+}
+
+.hero-stats {
+  display:flex; gap:36px; justify-content:center; margin-bottom:40px;
+  animation: fadeUp .7s .35s ease both;
+}
+.hstat { text-align:center; }
+.hstat-num {
+  font-family:'Bebas Neue', cursive;
+  font-size:32px; letter-spacing:.06em;
+  background: linear-gradient(135deg,var(--gold),var(--gold2));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+}
+.hstat-label { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.1em; margin-top:1px; }
+.hstat-divider { width:1px; background:var(--border); }
+
+.hero-btns {
+  display:flex; gap:14px; flex-wrap:wrap; justify-content:center;
+  animation: fadeUp .7s .42s ease both;
+}
+.btn-primary {
+  display:inline-flex; align-items:center; gap:9px;
+  padding:16px 34px; border-radius:14px;
+  background:linear-gradient(135deg, var(--green), #16a34a);
+  color:#fff; font-size:16px; font-weight:700; letter-spacing:.05em;
+  text-decoration:none;
+  box-shadow:0 10px 32px rgba(34,197,94,.35);
+  transition:transform .15s, box-shadow .15s;
+}
+.btn-primary:hover { transform:translateY(-2px); box-shadow:0 14px 40px rgba(34,197,94,.5); }
+.btn-primary:active { transform:scale(.97); }
+.btn-secondary {
+  display:inline-flex; align-items:center; gap:9px;
+  padding:16px 28px; border-radius:14px;
+  border:1.5px solid var(--border);
+  background:rgba(255,255,255,0.04);
+  color:var(--text); font-size:15px; font-weight:500;
+  text-decoration:none; transition:background .2s, border-color .2s;
+}
+.btn-secondary:hover { background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,.2); }
+.tg-svg { width:20px; height:20px; fill:#fff; }
+
+/* ── SECTION COMMONS ── */
+section { position:relative; z-index:1; }
+.section-inner { max-width:900px; margin:0 auto; padding:90px 24px; }
+.section-label {
+  font-size:11px; font-weight:700; letter-spacing:.18em;
+  color:var(--gold); text-transform:uppercase; margin-bottom:12px;
+}
+.section-title {
+  font-family:'Bebas Neue', cursive;
+  font-size: clamp(32px, 5vw, 52px); letter-spacing:.06em;
+  line-height:1.1; margin-bottom:16px;
+}
+.section-title em {
+  font-style:normal;
+  background:linear-gradient(135deg, var(--gold), var(--gold2));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+}
+.section-desc {
+  font-size:15px; font-weight:300; color:var(--muted);
+  max-width:520px; line-height:1.7; margin-bottom:50px;
+}
+
+/* ── FEATURES ── */
+.features-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+  gap:20px;
+}
+.feat-card {
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:28px 24px;
+  transition:transform .2s, border-color .2s, background .2s;
+  position:relative; overflow:hidden;
+}
+.feat-card::before {
+  content:'';
+  position:absolute; top:0; left:0; right:0; height:2px;
+  opacity:0; transition:opacity .3s;
+}
+.feat-card:hover { transform:translateY(-4px); border-color:rgba(245,200,66,0.3); background:rgba(255,255,255,0.07); }
+.feat-card:hover::before { opacity:1; }
+.fc-green::before { background:linear-gradient(90deg,transparent,var(--green),transparent); }
+.fc-gold::before  { background:linear-gradient(90deg,transparent,var(--gold),transparent); }
+.fc-blue::before  { background:linear-gradient(90deg,transparent,var(--blue),transparent); }
+.fc-red::before   { background:linear-gradient(90deg,transparent,#f87171,transparent); }
+
+.feat-icon-wrap {
+  width:48px; height:48px; border-radius:13px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:22px; margin-bottom:18px;
+}
+.fi-g { background:rgba(34,197,94,.15); }
+.fi-gold { background:rgba(245,200,66,.12); }
+.fi-b { background:rgba(56,189,248,.15); }
+.fi-r { background:rgba(248,113,113,.15); }
+
+.feat-title {
+  font-size:16px; font-weight:700; margin-bottom:8px; color:#fff;
+}
+.feat-desc { font-size:13.5px; color:var(--muted); line-height:1.65; }
+
+/* ── WHY JOIN (Timeline style) ── */
+.why-grid { display:grid; grid-template-columns:1fr 1fr; gap:0 50px; }
+.why-col { display:flex; flex-direction:column; gap:28px; }
+.why-item { display:flex; gap:16px; align-items:flex-start; }
+.why-num {
+  font-family:'Bebas Neue', cursive; font-size:36px; letter-spacing:.04em;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  min-width:42px; line-height:1.1;
+}
+.why-text h3 { font-size:15px; font-weight:700; color:#fff; margin-bottom:5px; }
+.why-text p  { font-size:13.5px; color:var(--muted); line-height:1.6; }
+
+/* ── TESTIMONIALS ── */
+.testi-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px; }
+.testi-card {
+  background:var(--card); border:1px solid var(--border); border-radius:18px;
+  padding:22px 20px;
+  transition:transform .2s;
+}
+.testi-card:hover { transform:translateY(-3px); }
+.testi-stars { color:var(--gold); font-size:14px; margin-bottom:10px; letter-spacing:2px; }
+.testi-text { font-size:14px; color:var(--muted); line-height:1.65; margin-bottom:16px; }
+.testi-author { display:flex; align-items:center; gap:10px; }
+.testi-avatar {
+  width:34px; height:34px; border-radius:50%;
+  background:linear-gradient(135deg,var(--gold),#ff9a3c);
+  display:flex; align-items:center; justify-content:center;
+  font-size:13px; font-weight:700; color:#1a0a00;
+}
+.testi-name { font-size:13px; font-weight:600; color:#fff; }
+.testi-loc  { font-size:11px; color:var(--muted); }
+
+/* ── HOW IT WORKS ── */
+.steps { display:flex; flex-direction:column; gap:0; position:relative; max-width:560px; }
+.steps::before {
+  content:''; position:absolute; left:24px; top:48px; bottom:48px; width:2px;
+  background:linear-gradient(180deg, var(--gold), var(--green), var(--blue));
+  opacity:.25;
+}
+.step { display:flex; gap:24px; align-items:flex-start; padding:20px 0; }
+.step-num {
+  width:50px; height:50px; border-radius:50%;
+  background:linear-gradient(135deg, var(--dark2), var(--dark));
+  border:2px solid rgba(245,200,66,.3);
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Bebas Neue', cursive; font-size:22px;
+  color:var(--gold); flex-shrink:0; position:relative; z-index:1;
+}
+.step-body h3 { font-size:16px; font-weight:700; color:#fff; margin-bottom:5px; padding-top:10px; }
+.step-body p  { font-size:14px; color:var(--muted); line-height:1.6; }
+
+/* ── CTA BANNER ── */
+.cta-banner {
+  margin:0 24px 80px;
+  max-width:860px; margin-left:auto; margin-right:auto;
+  background:linear-gradient(135deg, rgba(245,200,66,0.1) 0%, rgba(34,197,94,0.08) 100%);
+  border:1px solid rgba(245,200,66,0.2);
+  border-radius:28px; padding:56px 40px;
+  text-align:center; position:relative; overflow:hidden;
+}
+.cta-banner::before {
+  content:'';
+  position:absolute; top:-60px; left:50%; transform:translateX(-50%);
+  width:400px; height:400px; border-radius:50%;
+  background:rgba(245,200,66,0.08); filter:blur(80px);
+  pointer-events:none;
+}
+.cta-banner h2 {
+  font-family:'Bebas Neue', cursive;
+  font-size: clamp(30px,5vw,54px); letter-spacing:.07em; margin-bottom:14px;
+}
+.cta-banner p { font-size:16px; color:var(--muted); max-width:480px; margin:0 auto 32px; line-height:1.65; }
+.cta-banner .btn-primary { margin:0 auto; display:inline-flex; }
+
+/* ── ADVERTISER ── */
+.ad-bar {
+  background: rgba(56,189,248,0.05);
+  border-top:1px solid rgba(56,189,248,0.12);
+  text-align:center; padding:14px 24px;
+  font-size:12.5px; color:var(--muted);
+}
+.ad-bar a { color:var(--blue); font-weight:600; text-decoration:none; }
+.ad-bar a:hover { text-decoration:underline; }
+
+/* ── FOOTER ── */
+footer {
+  background: rgba(0,0,0,0.4);
+  border-top:1px solid var(--border);
+  padding:36px 40px;
+  display:flex; align-items:center; justify-content:space-between;
+  flex-wrap:wrap; gap:16px;
+}
+.footer-logo {
+  font-family:'Bebas Neue', cursive; font-size:20px; letter-spacing:.1em;
+  background:linear-gradient(90deg,var(--gold),var(--gold2));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+}
+.footer-disclaimer { font-size:11.5px; color:var(--muted); max-width:400px; line-height:1.5; }
+.footer-links { display:flex; gap:20px; }
+.footer-links a { font-size:12px; color:var(--muted); text-decoration:none; }
+.footer-links a:hover { color:#fff; }
+
+/* ── SCROLL REVEAL ── */
+.reveal { opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity:1; transform:none; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp   { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
+@keyframes slideDown{ from{opacity:0;transform:translateY(-16px)} to{opacity:1;transform:none} }
+
+/* ── RESPONSIVE ── */
+@media(max-width:700px){
+  nav { padding:14px 20px; }
+  .nav-links { display:none; }
+  .hero-stats { gap:24px; }
+  .hstat-num { font-size:26px; }
+  .why-grid { grid-template-columns:1fr; }
+  footer { flex-direction:column; align-items:flex-start; }
+  .cta-banner { padding:36px 22px; }
+}
+@media(max-width:480px){
+  .hero-btns { flex-direction:column; align-items:center; }
+  .btn-primary, .btn-secondary { width:100%; justify-content:center; }
+}
+</style>
 </head>
-
 <body>
 
-<div class="top-bar">
-  Don't have Telegram yet? Try it now!
-</div>
-
-<div class="wrapper">
-  <div class="card">
-
-    <!-- LOGO -->
-    <div class="logo">
-      <img src="rochit.jpeg" alt="Channel Logo">
-    </div>
-
-    <!-- TITLE -->
-    <h1>Rochit Singh
-</h1>
-    <div class="subs">15,500+ Subscribers</div>
-
-    <!-- FEATURES -->
-    <div class="features">
-      <span>Market insights shared for educational purpose</span>
-      <span>Structured trading approach by experienced traders</span>
-      <span>Trusted community of 15K+ active traders</span>
-    </div>
-
-    <!-- BUTTON -->
-    <a class="btn" href="https://t.me/+BGCF6cQ8SjE3YWQ1">
-      VIEW IN TELEGRAM
-    </a>
-
-    <!-- DISCLAIMER -->
-    <div class="disclaimer">
-      This channel is for educational purposes only.<br>
-      We do not provide investment advice or guaranteed returns.
-    </div>
-
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo">Harsha (ROCKY BHAI)🦅</div>
+  <div class="nav-links">
+    <a href="#features">Features</a>
+    <a href="#why">Why Join</a>
+    <a href="#how">How it Works</a>
+    <a href="#reviews">Reviews</a>
   </div>
+  <a class="nav-cta" href="https://t.me/+qE8WM4boblY4YmY1" target="_blank">Join Now →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-circles">
+    <div class="hbc hbc1"></div>
+    <div class="hbc hbc2"></div>
+    <div class="hbc hbc3"></div>
+  </div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-eyebrow">
+    <span class="live-dot"></span>
+    India's Most Trusted Matka Channel
+  </div>
+
+  <div class="avatar-wrap">
+    <div class="avatar-spinner"></div>
+    <div class="avatar-inner"></div>
+    <img src="harsha.jpeg"
+         alt="Harsha"
+         onerror="this.src='https://placehold.co/128x128/0f172a/F5C842?text=DP'">
+  </div>
+
+  <h1 class="hero-title"><span>Harsha (ROCKY BHAI)🦅</span></h1>
+  <p class="hero-sub">Your ultimate destination for daily Matka results, expert tips, and a thriving community. Join 37,000+ members winning smarter every day.</p>
+
+  <div class="hero-stats">
+    <div class="hstat">
+      <div class="hstat-num">37K+</div>
+      <div class="hstat-label">Members</div>
+    </div>
+    <div class="hstat-divider"></div>
+    <div class="hstat">
+      <div class="hstat-num">Daily</div>
+      <div class="hstat-label">Updates</div>
+    </div>
+    <div class="hstat-divider"></div>
+    <div class="hstat">
+      <div class="hstat-num">100%</div>
+      <div class="hstat-label">Free</div>
+    </div>
+    <div class="hstat-divider"></div>
+    <div class="hstat">
+      <div class="hstat-num">24/7</div>
+      <div class="hstat-label">Support</div>
+    </div>
+  </div>
+
+  <div class="hero-btns">
+    <a class="btn-primary" href="https://t.me/+qE8WM4boblY4YmY1" target="_blank">
+      <svg class="tg-svg" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.04 9.613c-.15.665-.54.83-1.094.517l-3-2.21-1.448 1.393c-.16.16-.295.295-.606.295l.215-3.053 5.56-5.023c.242-.215-.053-.334-.374-.12L7.18 14.6l-2.956-.924c-.643-.2-.656-.643.134-.953l11.55-4.452c.535-.194 1.003.13.654.977z"/></svg>
+      Join Free on Telegram
+    </a>
+    <a class="btn-secondary" href="#features">
+      Learn More ↓
+    </a>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="section-inner">
+    <div class="section-label reveal">What We Offer</div>
+    <h2 class="section-title reveal">Everything You Need to <em>Win Smarter</em></h2>
+    <p class="section-desc reveal">We bring you the most accurate, timely, and expert-curated content in the Matka world — completely free.</p>
+
+    <div class="features-grid">
+      <div class="feat-card fc-gold reveal">
+        <div class="feat-icon-wrap fi-gold">🏆</div>
+        <div class="feat-title">Daily Expert Tips</div>
+        <div class="feat-desc">Hand-picked predictions from seasoned analysts posted every day before the market opens. Never miss a winning move.</div>
+      </div>
+      <div class="feat-card fc-green reveal">
+        <div class="feat-icon-wrap fi-g">⚡</div>
+        <div class="feat-title">Instant Live Results</div>
+        <div class="feat-desc">Real-time results for all major markets — Milan, Kalyan, Main Mumbai, Rajdhani — posted the moment they drop.</div>
+      </div>
+      <div class="feat-card fc-blue reveal">
+        <div class="feat-icon-wrap fi-b">📊</div>
+        <div class="feat-title">Charts & Patterns</div>
+        <div class="feat-desc">Detailed historical charts, panel records, and pattern analysis to help you make data-driven decisions.</div>
+      </div>
+      <div class="feat-card fc-red reveal">
+        <div class="feat-icon-wrap fi-r">🤝</div>
+        <div class="feat-title">Community Support</div>
+        <div class="feat-desc">A community of 37,000+ members sharing tips, strategies, and wins every day. You're never playing alone.</div>
+      </div>
+      <div class="feat-card fc-gold reveal">
+        <div class="feat-icon-wrap fi-gold">🎯</div>
+        <div class="feat-title">Premium Guessing</div>
+        <div class="feat-desc">Weekly premium number sets and Jodi/Panna guessing shared exclusively with our Telegram members.</div>
+      </div>
+      <div class="feat-card fc-green reveal">
+        <div class="feat-icon-wrap fi-g">🔔</div>
+        <div class="feat-title">Instant Notifications</div>
+        <div class="feat-desc">Never miss an update. Get push notifications for results, tips, and special announcements directly on Telegram.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY JOIN -->
+<section id="why" style="background:rgba(255,255,255,0.016);">
+  <div class="section-inner">
+    <div class="section-label reveal">Why Choose Us</div>
+    <h2 class="section-title reveal">Reasons to Join <em>Today</em></h2>
+    <p class="section-desc reveal">Thousands of players trust DP Boss Matka Satta every day. Here's what sets us apart from the crowd.</p>
+
+    <div class="why-grid">
+      <div class="why-col">
+        <div class="why-item reveal">
+          <div class="why-num">01</div>
+          <div class="why-text">
+            <h3>Completely Free — Always</h3>
+            <p>No subscription fees, no hidden charges. All tips, results, and charts are free forever for our community members.</p>
+          </div>
+        </div>
+        <div class="why-item reveal">
+          <div class="why-num">02</div>
+          <div class="why-text">
+            <h3>Verified Track Record</h3>
+            <p>Our tips are backed by years of consistent results. We share screenshots of wins — not just promises.</p>
+          </div>
+        </div>
+        <div class="why-item reveal">
+          <div class="why-num">03</div>
+          <div class="why-text">
+            <h3>All Major Markets Covered</h3>
+            <p>From Kalyan to Main Mumbai, Milan Day to Rajdhani Night — we cover every major market with precision.</p>
+          </div>
+        </div>
+      </div>
+      <div class="why-col">
+        <div class="why-item reveal">
+          <div class="why-num">04</div>
+          <div class="why-text">
+            <h3>37,000+ Trusted Members</h3>
+            <p>Our growing community is proof. Real players, real wins. Join the family that's already winning big.</p>
+          </div>
+        </div>
+        <div class="why-item reveal">
+          <div class="why-num">05</div>
+          <div class="why-text">
+            <h3>Beginner Friendly</h3>
+            <p>New to Matka? We guide you from the basics to advanced strategies. Everyone starts somewhere — start with us.</p>
+          </div>
+        </div>
+        <div class="why-item reveal">
+          <div class="why-num">06</div>
+          <div class="why-text">
+            <h3>Active 24/7 Support</h3>
+            <p>Questions? Doubts? Our admins and community members are always active to help you at any hour.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="section-inner">
+    <div class="section-label reveal">Simple Process</div>
+    <h2 class="section-title reveal">How to Get <em>Started</em></h2>
+    <p class="section-desc reveal">Joining and winning is as easy as 3 steps. Get started in under a minute.</p>
+
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Click "Join Free on Telegram"</h3>
+          <p>Tap the green button on this page. It will open our official Telegram channel link securely.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Join the Channel</h3>
+          <p>Press "Join" in Telegram. Instantly become part of a 37,000+ strong community of Matka enthusiasts.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Receive Daily Tips & Results</h3>
+          <p>Get daily predictions, live results, charts, and community insights delivered straight to your Telegram — for free.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" style="background:rgba(255,255,255,0.016);">
+  <div class="section-inner">
+    <div class="section-label reveal">Community Speaks</div>
+    <h2 class="section-title reveal">What Our <em>Members Say</em></h2>
+    <p class="section-desc reveal">Real reviews from real members. We let our community do the talking.</p>
+
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Best Matka channel on Telegram. Tips are accurate and results come instantly. Been a member for 6 months — never going back!"</p>
+        <div class="testi-author">
+          <div class="testi-avatar">RK</div>
+          <div>
+            <div class="testi-name">Rahul K.</div>
+            <div class="testi-loc">Mumbai, Maharashtra</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Joined 3 months ago and already made back more than I expected. The daily guessing tips are incredibly accurate. Highly recommend!"</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#38bdf8,#818cf8);">SK</div>
+          <div>
+            <div class="testi-name">Suresh K.</div>
+            <div class="testi-loc">Ahmedabad, Gujarat</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Live results, chart analysis, expert tips — all in one free channel. The community is super helpful too. 10/10 experience."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#22c55e,#16a34a);">AM</div>
+          <div>
+            <div class="testi-name">Anil M.</div>
+            <div class="testi-loc">Delhi, India</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner reveal">
+  <h2>Ready to Start <span style="background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Winning?</span></h2>
+  <p>Join 37,000+ smart players already in our Telegram community. It's 100% free — always.</p>
+  <a class="btn-primary" href="https://t.me/+2NHEh2S_UvsxZGY9" target="_blank">
+    <svg class="tg-svg" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.04 9.613c-.15.665-.54.83-1.094.517l-3-2.21-1.448 1.393c-.16.16-.295.295-.606.295l.215-3.053 5.56-5.023c.242-.215-.053-.334-.374-.12L7.18 14.6l-2.956-.924c-.643-.2-.656-.643.134-.953l11.55-4.452c.535-.194 1.003.13.654.977z"/></svg>
+    Join Free on Telegram
+  </a>
 </div>
 
+<!-- ADVERTISER BAR -->
+<div class="ad-bar">
+  This channel is advertised by &nbsp;<a href="https://t.me/+ifc6dyg-xiA2ZGE1" target="_blank">Digital Ads Expert</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Harsha (ROCKY BHAI)🦅</div>
+  <p class="footer-disclaimer">This channel is for informational and entertainment purposes only. Please play responsibly. We do not promote illegal gambling.</p>
+  <div class="footer-links">
+    <a href="https://t.me/+qE8WM4boblY4YmY1" target="_blank">Telegram</a>
+    <a href="#features">Features</a>
+    <a href="#reviews">Reviews</a>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){ e.target.classList.add('visible'); }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
